@@ -2,10 +2,13 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const http = require("http");
-const connectDB = require('./config/dbConnect');
-require("dotenv").config(); 
+const connectDB = require("./config/dbConnect");
+require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/AuthRoutes");
+const uploadRouter = require("./routes/uploadRoutes");
+
+const exp = require("constants");
 
 // Middleware
 app.use(
@@ -18,9 +21,11 @@ app.use(
 
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use("/", authRoute);
+app.use("/api/upload", uploadRouter);
 
 // Connect to MongoDB and start the server
 connectDB()
