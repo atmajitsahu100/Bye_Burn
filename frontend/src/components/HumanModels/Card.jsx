@@ -16,7 +16,7 @@ const Card = ({id, name, image}) => {
             type='radio'
             name='image'
             id={Id}
-            className=' size-6 mt-2'/>
+            className=' size-6 m-2'/>
             {name}
           </label>
       </div>

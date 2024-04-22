@@ -22,7 +22,6 @@ const PatientDetails = () => {
 
   return (
     <div>
-      {/* <NavBar /> */}
         <div className="bg-blue-50 p-5 h-screen">
             <div className='flex justify-center'>
                 <h1 className=" w-[30%] text-4xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center border-dashed border-4 rounded-lg border-blue-900 ">Patient Details</h1>

@@ -1,13 +1,17 @@
 import React from 'react'
 import logoImage from '../Logo/ByeBurns-logo.png'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavBar from '../../pages/Navbar';
 
 const AddNewPatient = () => {
+    const navigate = useNavigate();
+
+    function ClickHandler(){
+        navigate('/humanmodel');
+    }
 
   return (
     <>
-    <NavBar />
     <section  className="bg-blue-50 dark:bg-gray-900 sm: h-screen">
         <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-14">
           <Link to={'/'} className=" flex flex-col items-center p-3">
@@ -19,7 +23,7 @@ const AddNewPatient = () => {
                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Add New Patient Detail
                     </h1>
-                    <form class="space-y-4 md:space-y-6">
+                    <form class="space-y-4 md:space-y-6" onSubmit={ClickHandler}>
                         {/* <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-700 md:text-2xl 
                             dark:text-white m-2 mb-5 text-center">Add New Patient Detail
                         </h1> */}
