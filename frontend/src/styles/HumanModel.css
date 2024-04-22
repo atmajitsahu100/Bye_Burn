@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 100vh; /* Adjust height as needed */
+  }
+  
+  .image {
+    max-width: 100%; /* Ensure image does not exceed parent container */
+    max-height: 100%; /* Ensure image does not exceed parent container */
+  }
+  .tooltip {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px;
+    background-color: rgba(237, 13, 13, 0.7);
+    border: 1px solid #902323;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+ 
+  .hovered {
+    fill: red; /* For SVG shapes */
+    background-color: red; /* For HTML elements like div */
+  }
+  /* HumanModel.css */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow mouse events to pass through */
+  }
+  
+  .hovered-area {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.5); /* Red with 50% opacity */
+     /* To make it circular */
+  }
+  
