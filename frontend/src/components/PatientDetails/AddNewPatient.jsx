@@ -42,7 +42,7 @@ const AddNewPatient = () => {
     <>
       <section className=" bg-white dark:bg-gray-900 sm:h-screen">
         <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-14">
-          <Link to={'/'} className="flex flex-col items-center p-3">
+          <Link to={'/patientdetails'} className="flex flex-col items-center p-3">
             <img className="w-24 h-12 mr-2 rounded-md" src={logoImage} alt="logo" />
             <div className="text-4xl mb-2 text-red-600">ByeBurns</div>
           </Link>

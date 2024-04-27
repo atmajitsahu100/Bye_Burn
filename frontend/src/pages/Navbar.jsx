@@ -70,8 +70,9 @@ const NavBar = (props) => {
   };
 
   const navigate = useNavigate();
+  
   function LogoHandler(){
-    navigate('/')
+    isLoggedIn ? (navigate('/patientdetails')) : (navigate('/'))
   }
 
   const drawer = (
@@ -124,7 +125,8 @@ const NavBar = (props) => {
                 <MenuIcon />
               </IconButton>
             </Hidden>
-            <img className=" w-24 h-12 mr-2 bg-transparen rounded-md hover:cursor-pointer" src={logoImage} onClick={LogoHandler} alt="logo"/>
+            <img className=" w-24 h-12 mr-2 bg-transparen rounded-md hover:cursor-pointer" src={logoImage} 
+            onClick={LogoHandler} alt="logo"/>
             <Typography variant="h6" className={classes.title}>
               ByeBurns
             </Typography>
