@@ -26,7 +26,7 @@ const data =[
     {
         id:5,
         name: "Back_Model 1",
-        image: './Assets/Models/B1.png',
+        image: './Assets/Models/B2.png',
         view: "back",
     },
     {
