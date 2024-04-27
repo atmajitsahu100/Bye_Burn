@@ -1,48 +1,51 @@
 const data =[
     {
         id:1,
-        name: "Model_1",
+        name: "Front_Model 1",
         image: './Assets/Models/F1.png',
+        view: "front",
     },
     {
         id:2,
-        name: "Model_2",
+        name: "Front_Model 2",
         image: './Assets/Models/F2.png',
+        view: "front",
     },
     {
         id:3,
-        name: "Model_3",
+        name: "Front_Model 3",
         image: './Assets/Models/F3.png',
+        view: "front",
     },
     {
         id:4,
-        name: "Model_4",
+        name: "Front_Model 4",
         image: './Assets/Models/F4.png',
+        view: "front",
     },
     {
         id:5,
-        name: "Model_5",
+        name: "Back_Model 1",
         image: './Assets/Models/B1.png',
+        view: "back",
     },
     {
         id:6,
-        name: "Model_6",
-        image: './Assets/Models/B2.png',
+        name: "Back_Model 2",
+        image: './Assets/Models/B3.png',
+        view: "back",
     },
     {
         id:7,
-        name: "Model_7",
-        image: './Assets/Models/B3.png',
+        name: "Back_Model 3",
+        image: './Assets/Models/B4.png',
+        view: "back",
     },
     {
         id:8,
-        name: "Model_8",
-        image: './Assets/Models/B4.png',
-    },
-    {
-        id:9,
-        name: "Model_9",
+        name: "Back_Model 4",
         image: './Assets/Models/B5.png',
+        view: "back",
     }
 ];
 

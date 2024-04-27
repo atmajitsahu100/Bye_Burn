@@ -9,7 +9,7 @@ const Card = ({id, name, image}) => {
       console.log( `${Id} Image selected`);
     }
   return (
-      <div className='flex flex-col justify-center items-center p-2 w-fit h-fit' onClick={clickHandler}>
+      <div className='flex flex-col justify-center items-center p-2 w-fit h-full' onClick={clickHandler}>
           <label className='text-2xl font-semibold m-1 text-center'>
             <img src={image} alt='' className='w-fit h-fit rounded-md'/> 
             <input

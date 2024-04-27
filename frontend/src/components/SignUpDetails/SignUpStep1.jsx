@@ -80,7 +80,7 @@ const SignUpStep1 = ({ formData, updateForm }) => {
 
                         </div>
                         <p className="text-sm text-gray-500 dark:text-gray-300">
-                            Don’t have an account yet? <Link to={"/signup"} className="font-medium text-primary-600 hover:underline dark:text-primary-500">Signup</Link>
+                            If you already have an account. <Link to={"/login"} className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login</Link>
                         </p>
                     </form>
                 </div>

@@ -139,7 +139,7 @@ const Signup = () => {
 
   return (
     <>
-      <section className="bg-blue-50 dark:bg-gray-900">
+      <section className="bg-white dark:bg-gray-900">
         <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-14">
             <title> signup </title>
               <h2 className=" text-4xl mb-2 text-blue-700 font-bold"> Signup </h2>
