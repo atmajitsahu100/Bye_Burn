@@ -8,11 +8,19 @@ const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/AuthRoutes");
 const uploadRouter = require("./routes/uploadRoutes");
 
+//const tf = require('@tensorflow/tfjs-node');
+
+const tf = require("@tensorflow/tfjs");
+const tfn = require("@tensorflow/tfjs-node");
+const handler = tfn.io.fileSystem("D:/mini project/Bye_Burn/backend/tf-models/wts.h5");
+
+
+
 const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
-
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 
 const exp = require("constants");
 
@@ -25,6 +33,27 @@ app.use(
   })
 );
 
+async function loadModel() {
+  const modelUrl =
+  'https://storage.googleapis.com/tfjs-models/savedmodel/mobilenet_v2_1.0_224/model.json';
+const model = await tf.loadGraphModel(modelUrl);
+const zeros = tf.zeros([1, 224, 224, 3]);
+model.predict(zeros).print();
+}
+
+// async function main() {
+//   const model = await loadModel();
+
+//   // Use the model for inference
+//   // For example, make predictions on new data
+//   const inputData = tf.tensor2d([[1, 2, 3]]);
+//   const output = model.predict(inputData);
+//   output.print();
+// }
+
+// main();
+
+// loadModel();
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,15 +62,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", authRoute);
 app.use("/api/upload", uploadRouter);
 
-app.post('/apii/segment', (req, res) => {
- 
-  const { x, y } = req.body;
-  const segmentedAreas = [
-    { top: 100, left: 200, width: 50, height: 50 }, // Example segmented area
-    // Add more segmented areas as needed
-  ];
-  res.json({ segmentedAreas });
-});
 
 // Connect to MongoDB and start the server
 connectDB()

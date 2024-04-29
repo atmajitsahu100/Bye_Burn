@@ -12,6 +12,10 @@ import HumanModel from "./pages/HumanModel";
 import NavBar from "./pages/Navbar";
 // import NavBar from "./components/NavBar.jsx/NavBar";
 import { useState } from "react";
+import PatientProfile from "./components/PatientDetails/PatientProfile";
+import HumanBodyColoring from "./pages/HumanBodyColoring";
+import MarkedImages from "./pages/MarkedImages";
+import EditHumanModel from "./pages/EditHumanModel";
 //import PatientDetails from "./components/PatientDetails/PatientDetails";
 
 
@@ -33,8 +37,11 @@ function App() {
           <Route path="/humanmodel" element={<HumanModels />} />    
           <Route path="/patient" element={<PatientDetails />} />    
             
-            <Route path="/human" element={<HumanModel/>}/>
+          <Route path="/human" element={<HumanBodyColoring/>}/>
           <Route path="/patientdetails" element={<PatientDetails />} />
+          <Route path="/patientprofile" element={<PatientProfile/>}/>
+          <Route path="/markedimages" element={<MarkedImages/>}/>
+          <Route path="/editimage" element={<EditHumanModel/>}/>
       </Routes>
     </div>
   );

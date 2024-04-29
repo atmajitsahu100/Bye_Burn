@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "../styles/HomePage.css";
 import PatientDetails from '../components/PatientDetails/PatientDetails';
 

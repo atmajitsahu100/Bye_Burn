@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logoImage from '../Logo/ByeBurns-logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import NavBar from '../../pages/Navbar';
-
+import { ToastContainer,toast } from 'react-toastify';
 const AddNewPatient = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -28,8 +28,17 @@ const AddNewPatient = () => {
         body: JSON.stringify(formData)
       });
       if (response.ok) {
+        toast.success("Patient added successfully",{
+          position: "top-right",
+      });
         console.log("patient added successfully")
+        setTimeout(() => {
+          navigate('/humanmodel');
+        }, 1000);
       } else {
+        toast.error("error while adding patient",{
+          position: "bottom-left",
+      });
         console.log("error");
       }
     } catch (error) {
@@ -44,7 +53,6 @@ const AddNewPatient = () => {
 
   return (
     <>
-      <NavBar />
       <section className="bg-blue-50 dark:bg-gray-900 sm:h-screen">
         <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-14">
           <Link to={'/'} className="flex flex-col items-center p-3">
@@ -168,6 +176,7 @@ const AddNewPatient = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </>
   );
 };
