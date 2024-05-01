@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import "../styles/HomePage.css";
-import PatientDetails from '../components/PatientDetails/PatientDetails';
 
 const HomePage = () => {
     const handleLogout = () => {
-     
       console.log("Logged out");
     };
   

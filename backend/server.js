@@ -34,11 +34,13 @@ app.use(
 );
 
 async function loadModel() {
-  const modelUrl =
-  'https://storage.googleapis.com/tfjs-models/savedmodel/mobilenet_v2_1.0_224/model.json';
-const model = await tf.loadGraphModel(modelUrl);
-const zeros = tf.zeros([1, 224, 224, 3]);
-model.predict(zeros).print();
+  const modelPath = 'D:/mini project/Bye_Burn/backend/tf-models/wts.h5';  // Corrected file path
+  const model = await tf.loadLayersModel('file://' + modelPath);
+
+  // Make predictions
+  const input = tf.tensor2d([[1, 2, 3, 4]]);
+  const output = model.predict(input);
+  output.print();
 }
 
 // async function main() {

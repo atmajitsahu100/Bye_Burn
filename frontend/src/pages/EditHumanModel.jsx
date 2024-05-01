@@ -90,11 +90,12 @@ function EditHumanModel() {
     // const { imageData, totalPixels } = location.state || {}; 
     // console.log(imageData);
     const location = useLocation();
-    const { imageData, totalPixels } = location.state || {};
+    const { imageData, totalPixels,patientId } = location.state || {};
 
     const [updatedImage, setUpdatedImage] = useState(imageData);
     const [totalSurfaceArea, setTotalSurfaceArea] = useState(0);
     const [markedRegions, setMarkedRegions] = useState(0);
+    const [colorSelection,handleColorSelection] =useState([255, 0, 0, 255]);
    // const [Tsa,setTsa]=useState(0);
     const [totalMarkedPixels, setTotalMarkedPixels] = useState(totalPixels);
 
@@ -113,13 +114,14 @@ function EditHumanModel() {
 
         let fillColor;
         var f=0;
-        if (pixelColor[0] === 255 && pixelColor[1] === 0 && pixelColor[2] === 0) {
-            // If the pixel is already red, color it white
-            fillColor = [255, 255, 255, 255]; // White color
+        if ((pixelColor[0] === 255 && pixelColor[1] === 0 && pixelColor[2] === 0)||(pixelColor[0] === 0 && pixelColor[1] === 255 && pixelColor[2] === 0)||(pixelColor[0] !== 255)) {
+            fillColor = [255, 255, 255, 255];
             f=1;
         } else {
-            // If the pixel is not red, color it red
-            fillColor = [255, 0, 0, 255]; // Red color
+            fillColor = colorSelection;
+            if((fillColor[0] === 0 && fillColor[1] === 255 && fillColor[2] === 0)){
+                f=1;
+            }
         }
 
         const boundaryColor = [0, 0, 0, 255]; // Black color (assuming boundary is black)
@@ -152,7 +154,7 @@ function EditHumanModel() {
             const totalPixels = totalMarkedPixels;
            // console.log(imageData,totalMarkedPixels );
             // Send a POST request to the backend
-            const response = await axios.post('http://localhost:4000/markedimage', { imageData, totalPixels });
+            const response = await axios.post('http://localhost:4000/markedimage', { imageData,totalPixels,patientId });
 
             if (response.status >= 200 && response.status < 300) {
                 
@@ -187,6 +189,13 @@ function EditHumanModel() {
 
     return (
         <div>
+             <div style={{ position: 'absolute', top: 70, right: 0, marginRight: '10px', marginTop: '10px' }}>
+                <button onClick={() => handleColorSelection([238, 75, 43,100])} style={{ marginRight: '10px', backgroundColor:'rgba(255, 0, 0, 0.5)' }}>1 Degree</button>
+                <button onClick={() => handleColorSelection([255, 0, 0, 130])} style={{ marginRight: '10px', backgroundColor:'rgba(255, 30, 0, 0.65)' }}>2 Degree</button>
+                <button onClick={() => handleColorSelection([255, 0, 0, 255])} style={{ marginRight: '10px', backgroundColor:'rgba(255, 0, 0, 255)' }}>3 Degree</button>
+                <button onClick={() => handleColorSelection([0, 255, 0, 255])} style={{ marginRight: '10px' ,backgroundColor:'green' }}>Heal</button>
+            </div>
+           
             <h1>Human Body Coloring</h1>
             <div className='mx-[400px]'>
                 <img src={updatedImage} alt="Human Body" onClick={handleBodyPartClick} style={{ cursor: 'crosshair' }} />

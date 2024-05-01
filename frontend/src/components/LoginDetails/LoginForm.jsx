@@ -4,13 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const LoginForm = () => {
   
   const navigate = useNavigate();
-  
-  const [showPassword, SetshowPassword] = useState(false);
 
   const [inputValue, setInputValue] = useState({
     email: "",
@@ -51,7 +48,7 @@ const LoginForm = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/");
+          navigate("/patientdetails");
         }, 1000);
       } else {
         handleError(message);
@@ -76,11 +73,11 @@ const LoginForm = () => {
 
   return (
     <>
-      <section  className="bg-blue-50 dark:bg-gray-900 sm: h-screen">
+      <section  className="bg-white dark:bg-gray-900 sm: h-screen">
         <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-14">
-          <Link to={'/'} className=" flex flex-col items-center p-3">
-              <img className=" w-24 h-12 mr-2 bg-slate-300 rounded-md" src={logoImage} alt="logo"/>   
-              <div className=" text-4xl mb-2 text-red-600">ByeBurn</div>
+          <Link to={('/patientdetails')} className=" flex flex-col items-center p-3">
+              <img className=" w-24 h-12 mr-2  rounded-md" src={logoImage} alt="logo"/>   
+              <div className=" text-4xl mb-2 text-red-600">ByeBurns</div>
           </Link>
             <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 
             hover:shadow-lg transition-all duration-200">
@@ -106,7 +103,7 @@ const LoginForm = () => {
                         <div>
                             <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                             <input 
-                            type={showPassword ? ("text") : ("password")} 
+                            type="password"
                             name="password" 
                             id="password" 
                             placeholder="••••••••"
@@ -117,9 +114,6 @@ const LoginForm = () => {
                             focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700
                             dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 
                             dark:focus:border-blue-500" />
-                            <span onClick={()=> SetshowPassword((prev)=> !prev)}>
-                              {showPassword ? (<AiOutlineEyeInvisible />) : (<AiOutlineEye />)}
-                            </span>
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="flex items-start">

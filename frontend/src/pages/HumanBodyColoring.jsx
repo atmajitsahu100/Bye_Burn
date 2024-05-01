@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import humanBodyImage from './b4_updated.png'; // Import the static image
-
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 function boundaryFill(context,f, x, y, fillColor, boundaryColor, timeoutPromise,setTotalMarkedPixels) {
     return new Promise((resolve, reject) => {
         const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
@@ -77,9 +78,20 @@ function boundaryFill(context,f, x, y, fillColor, boundaryColor, timeoutPromise,
 }
 
 function HumanBodyColoring() {
-    const [updatedImage, setUpdatedImage] = useState(humanBodyImage);
+    const location = useLocation();
+    const navigate = useNavigate();
+    let { selectedImage ,patientId} = location.state || {};
+    if(!patientId){
+        navigate('/patientdetails');
+    }
+    if(!selectedImage){
+        selectedImage=humanBodyImage;
+    }
+    // console.log(selectedImage+"da"+ humanBodyImage)
+    const [updatedImage, setUpdatedImage] = useState(selectedImage);
     const [totalSurfaceArea, setTotalSurfaceArea] = useState(0);
     const [markedRegions, setMarkedRegions] = useState(0);
+    const [colorSelection,handleColorSelection] =useState([255, 0, 0, 255]);
    // const [Tsa,setTsa]=useState(0);
     const [totalMarkedPixels, setTotalMarkedPixels] = useState(0);
 
@@ -98,13 +110,18 @@ function HumanBodyColoring() {
 
         let fillColor;
         var f=0;
-        if (pixelColor[0] === 255 && pixelColor[1] === 0 && pixelColor[2] === 0) {
+       // 238, 75, 43,100
+        if ((pixelColor[0] === 255 && pixelColor[1] === 0 && pixelColor[2] === 0)||(pixelColor[0] === 0 && pixelColor[1] === 255 && pixelColor[2] === 0)||(pixelColor[0] !== 255)) {
             // If the pixel is already red, color it white
             fillColor = [255, 255, 255, 255]; // White color
             f=1;
         } else {
             // If the pixel is not red, color it red
-            fillColor = [255, 0, 0, 255]; // Red color
+           
+            fillColor = colorSelection;
+            if((fillColor[0] === 0 && fillColor[1] === 255 && fillColor[2] === 0)){
+                f=1;
+            }
         }
 
         const boundaryColor = [0, 0, 0, 255]; // Black color (assuming boundary is black)
@@ -132,12 +149,11 @@ function HumanBodyColoring() {
 
     const saveMarkedImage = async () => {
         try {
-            // Prepare the data to send to the backend
+           
             const imageData = updatedImage; // Base64-encoded image data
             const totalPixels = totalMarkedPixels;
-           // console.log(imageData,totalMarkedPixels );
-            // Send a POST request to the backend
-            const response = await axios.post('http://localhost:4000/markedimage', { imageData, totalPixels });
+          
+            const response = await axios.post('http://localhost:4000/markedimage', { imageData, totalPixels,patientId });
 
             if (response.status >= 200 && response.status < 300) {
                 
@@ -153,7 +169,7 @@ function HumanBodyColoring() {
     };
     
 
-    // Function to get the color of a pixel at a given position
+
     function getColorAtPixel(context, x, y) {
         const imageData = context.getImageData(x, y, 1, 1);
         const [r, g, b, a] = imageData.data;
@@ -172,6 +188,12 @@ function HumanBodyColoring() {
 
     return (
         <div>
+             <div style={{ position: 'absolute', top: 70, right: 0, marginRight: '10px', marginTop: '10px' }}>
+                <button onClick={() => handleColorSelection([238, 75, 43,100])} style={{ marginRight: '10px', backgroundColor:'rgba(255, 0, 0, 0.5)' }}>1 Degree</button>
+                <button onClick={() => handleColorSelection([255, 0, 0, 130])} style={{ marginRight: '10px', backgroundColor:'rgba(255, 30, 0, 0.65)' }}>2 Degree</button>
+                <button onClick={() => handleColorSelection([255, 0, 0, 255])} style={{ marginRight: '10px', backgroundColor:'rgba(255, 0, 0, 255)' }}>3 Degree</button>
+                <button onClick={() => handleColorSelection([0, 255, 0, 255])} style={{ marginRight: '10px' ,backgroundColor:'green' }}>Heal</button>
+            </div>
             <h1>Human Body Coloring</h1>
             <div className='mx-[400px]'>
                 <img src={updatedImage} alt="Human Body" onClick={handleBodyPartClick} style={{ cursor: 'crosshair' }} />

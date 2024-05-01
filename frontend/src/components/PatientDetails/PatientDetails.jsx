@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from '../../pages/Navbar';
 import { CiSearch } from "react-icons/ci";
 import axios from 'axios';
 
 import Card from './Card';
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const PatientDetails = () => {
+    
     const navigate = useNavigate();
+
     const [models, setModels] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
 
+    
     useEffect(() => {
         const fetchPatients = async () => {
             try {
@@ -28,20 +31,19 @@ const PatientDetails = () => {
         setSearchQuery(event.target.value);
     };
 
-    function clickHandlerPatient() {
-        navigate('/addnewpatient');
-    }
     const clickHandler = () => {
       console.log("Clicked");
   };
 
     return (
         <div>
-            <div className="bg-blue-50 p-5 h-screen">
-                <div className='flex justify-center'>
-                    <h1 className="w-[30%] text-4xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center border-dashed border-4 rounded-lg border-blue-900">Patient Details</h1>
+            <div className="bg-white p-5 h-full">
+                <div className='flex justify-center w-full'>
+                    <h1 className="w-fit px-3 py-1 text-2xl font-bold leading-tight tracking-tight 
+                    text-gray-900 md:text-1xl dark:text-white text-center border-dashed border-4 
+                    rounded-lg border-blue-900 sm:w-[30%]">Patient Details</h1>
                 </div>
-                <div className='h-fit flex justify-between items-center m-5'>
+                <div className='h-fit flex flex-col justify-between m-5 sm:flex-row sm:items-center gap-2'>
                     <div className="xl:w-96 flex items-center justify-center">
                         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
                             <input
@@ -65,13 +67,16 @@ const PatientDetails = () => {
                             </button>
                         </div>
                     </div>
-                    <button className='mt-[-10px] font-semibold' onClick={clickHandlerPatient}>Add New Patient</button>
+                    <button className='mt-[-10px] font-semibold' onClick={()=> navigate('/addnewpatient')}>Add New Patient</button>
+                
                 </div>
 
                 <div className='w-full h-1 bg-blue-700 rounded-md items-center'></div>
                 <div className='bg-transparent grid grid-cols-1 gap-4 m-3 p-2 rounded-md md:grid-cols-2 xl:grid-cols-3'>
                     {models.map((model) => (
+                        <Link key={model._id} to={`/buttons/${model._id}`}>
                         <Card key={model._id} {...model}></Card>
+                        </Link>
                     ))}
                 </div>
             </div>

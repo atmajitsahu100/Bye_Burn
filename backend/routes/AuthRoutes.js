@@ -11,7 +11,7 @@ router.post("/signup", Signup);
 router.post("/login",Login);
 router.post('/',userVerification);
 router.post("/markedimage", MarkedImage);
-router.get("/allmarkedimages",getAllMarkedImages);
+router.get("/allmarkedimages/:patientId",getAllMarkedImages);
 
 
 module.exports = router;

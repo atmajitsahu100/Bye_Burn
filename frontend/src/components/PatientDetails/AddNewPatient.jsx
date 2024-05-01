@@ -13,6 +13,7 @@ const AddNewPatient = () => {
     weight: ''
   });
 
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -33,7 +34,7 @@ const AddNewPatient = () => {
       });
         console.log("patient added successfully")
         setTimeout(() => {
-          navigate('/humanmodel');
+          navigate('/patientdetails');
         }, 1000);
       } else {
         toast.error("error while adding patient",{
@@ -44,20 +45,16 @@ const AddNewPatient = () => {
     } catch (error) {
       console.error('Error:', error);
     }
+    navigate('/patientdetails');
   };
-    const navigate = useNavigate();
-
-    function ClickHandler(){
-        navigate('/humanmodel');
-    }
 
   return (
     <>
-      <section className="bg-blue-50 dark:bg-gray-900 sm:h-screen">
+      <section className=" bg-white dark:bg-gray-900 sm:h-screen">
         <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-14">
-          <Link to={'/'} className="flex flex-col items-center p-3">
-            <img className="w-24 h-12 mr-2 bg-slate-300 rounded-md" src={logoImage} alt="logo" />
-            <div className="text-4xl mb-2 text-red-600">ByeBurn</div>
+          <Link to={'/patientdetails'} className="flex flex-col items-center p-3">
+            <img className="w-24 h-12 mr-2 rounded-md" src={logoImage} alt="logo" />
+            <div className="text-4xl mb-2 text-red-600">ByeBurns</div>
           </Link>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg transition-all duration-200">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
