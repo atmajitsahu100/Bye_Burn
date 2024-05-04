@@ -35,7 +35,7 @@ const AddNewPatient = () => {
     } catch (error) {
       console.error('Error:', error);
     }
-    navigate('/patientdetail');
+    navigate('/patientdetails');
   };
 
   return (

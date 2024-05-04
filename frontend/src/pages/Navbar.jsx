@@ -59,11 +59,11 @@ const NavBar = (props) => {
     console.log(`${selectedValue}`);
   };
 
-  useEffect( ()=>{
-    selectedValue === "select" ?
-    (navigate('/patientdetails')) : 
-    (navigate(`/${selectedValue}`)) 
-  },[selectedValue])
+  // useEffect( ()=>{
+  //   selectedValue === "select" ?
+  //   (navigate('/patientdetails')) : 
+  //   (navigate(`/${selectedValue}`)) 
+  // },[selectedValue])
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

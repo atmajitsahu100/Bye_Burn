@@ -24,7 +24,8 @@ function App() {
     <div className="App">
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
-          <Route path="/" element={<LoginForm setIsLoggedIn={setIsLoggedIn} />}/>
+          {/* <Route path="/" element={<LoginForm setIsLoggedIn={setIsLoggedIn} />}/> */}
+          <Route path="/" element={<LoginForm />} />
           {/* <Route path="/login" element={<LoginForm />} /> */}
           <Route path="/login" element={<LoginForm setIsLoggedIn={setIsLoggedIn}/>} />
           <Route path="/signup" element={<Signup />} />
