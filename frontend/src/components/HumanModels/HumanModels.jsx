@@ -3,10 +3,12 @@
 import React, { useState } from 'react';
 import data from '../data';
 import Card from './Card';
-import { useNavigate,useParams } from 'react-router-dom'; // Import useNavigate hook for navigation
+import { useNavigate, useParams } from 'react-router-dom'; // Import useNavigate hook for navigation
+
 import { useLocation } from 'react-router-dom';
 const HumanModels = () => {
     const [view, setView] = useState("front");
+    
     const navigate = useNavigate(); // Initialize useNavigate hook
     // const { patientId } = useParams(); 
     const location = useLocation();
@@ -32,15 +34,15 @@ const HumanModels = () => {
                     </div>
                     <div className='flex p-1 gap-x-1 rounded-full max-w-max bg-gray-100'>
                         <button
-                            className={`${view === "front" ?
+                            className={`${view === "back" ?
                                 "bg-gray-100 text-blue-700 font-semibold hover:bg-transparent" :
-                                "bg-blue-700 text-white font-bold"} py-2 px-5 rounded-full transition-all duration-200`}
+                                "bg-blue-700 text-white font-bold"} px-5 py-2 m-1 rounded-full transition-all duration-200`}
                             onClick={() => handleViewChange("front")}
                         >Front</button>
                         <button
-                            className={`${view === "back" ?
+                            className={`${view === "front" ?
                                 "bg-gray-100 text-blue-700 font-semibold hover:bg-transparent" :
-                                "bg-blue-700 text-white font-bold"} py-2 px-5 rounded-full transition-all duration-200`}
+                                "bg-blue-700 text-white font-bold"} px-5 py-2 m-1 rounded-full transition-all duration-200`}
                             onClick={() => handleViewChange("back")}
                         >Back</button>
                     </div>

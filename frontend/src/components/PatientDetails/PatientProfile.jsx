@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import MyImage from './x11.jpg'
-import Card from './Card';
+import data from '../data';
+import MarkedCard from './MarkedCard';
 const PatientProfile = () => {
 
     const [selected, setSelected] = useState(false);
     const [image, setImage] = useState(null);
-    const [models, setModels]= useState([]);
 
+    const models = data;
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -36,8 +36,8 @@ const PatientProfile = () => {
                                 <p className="text-lg text-gray-600"><span className="font-bold text-black">Gender:</span> M</p>
                                 <p className="text-lg text-gray-600"><span className="font-bold text-black">Weight:</span> 63</p>
                                 <p className="text-lg text-gray-600"><span className="font-bold text-black">Contact:</span> 9234802085</p>
-                                <p className="text-lg text-gray-600"><span className="font-bold text-black">Burn-Degree:</span> 2<sup>o</sup></p>
-                                <p className="text-lg text-gray-600"><span className="font-bold text-black">Previous Disease:</span> Malaria </p>
+                                {/* <p className="text-lg text-gray-600"><span className="font-bold text-black">Burn-Degree:</span> 2<sup>o</sup></p>
+                                <p className="text-lg text-gray-600"><span className="font-bold text-black">Previous Disease:</span> Malaria </p> */}
 
                             </div>
                         </div>
@@ -72,31 +72,19 @@ const PatientProfile = () => {
             
             {/* Lower Part */}
             
-            <div className=' w-full h-2/3 flex flex-col m-2 p-3'>
+            <div className=' w-full h-100vh flex flex-col m-2 p-3'>
                 <div className=' w-full bg-white p-2 rounded-md'>
                     <h1 className='text-2xl text-center font-semibold bg-slate-200 rounded-md p-2'>Pateint Model Marked</h1> 
                 </div>
-
-                <div className=' w-full h-full flex flex-row justify-between'>
-                    <div className=' w-8/12 h-full mt-2 bg-slate-200 grid grid-cols-1 
-                    md:grid-cols-2 lg:grid-cols-4 gap-5 rounded-md p-2'>
+                
+                <div className='w-full h-full m-2 bg-blue-50 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 rounded-md p-2'>
                     {
-                        models.map( (model) => {
-                            return (
-                                <div className='bg-white flex justify-between items-center shadow-blue-500
-                                rounded-md hover:shadow-lg'>
-                                    <Card key={model.id}{...model}></Card>
-                                </div>
-                            )
-                        })
+                        models.map((model) => (
+                            <div className=' bg-white h-[50vh] flex justify-center items-center shadow-blue-500 rounded-md hover:shadow-lg'>
+                                <MarkedCard key={model.id} {...model} />
+                            </div>
+                        ))
                     }
-                    </div>
-
-                    <div className='w-1/3 bg-white h-full m-2 rounded-md flex flex-col justify-center p-5 gap-y-5'>
-                        <button>Edit</button>
-                        <p className="text-2xl text-gray-600"><span className="font-bold text-black">TBSA:</span> 12.32</p>
-                        <p className="text-2xl text-gray-600"><span className="font-bold text-black">TFR:</span> 30</p>
-                    </div>
                 </div>
 
             </div>

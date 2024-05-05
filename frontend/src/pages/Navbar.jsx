@@ -15,7 +15,8 @@ import {
 } from '@material-ui/core';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Link, useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate} from 'react-router-dom'; 
+import { useParams } from 'react-router';
 import logoImage from '../components/Logo/ByeBurns-logo.png'
 import { toast } from 'react-toastify';
 import { FaRegUserCircle } from "react-icons/fa";
@@ -40,8 +41,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavBar = () => {
-  const [selectedValue, setSelectedValue] = useState('');
+const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
+  
+  const { patientId } = useParams(); 
 
   const [openRight, setOpenRight] = React.useState(false);
  
@@ -50,11 +52,6 @@ const NavBar = () => {
 
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-    console.log(`${selectedValue}`);
-  };
 
   // useEffect( ()=>{
   //   selectedValue === "select" ?
@@ -69,8 +66,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   
   function LogoHandler(){
-    // isLoggedIn ? (navigate('/patientdetails')) : (navigate('/'))
-    navigate('/patientdetails');
+    isLoggedIn === true ? (navigate('/patientdetails')) : (navigate('/'))
   }
 
   const drawer = (
@@ -78,29 +74,32 @@ const NavBar = () => {
       <List>
         <ListItem button>
           <ListItemText primary="Home" onClick={()=>{
-            // isLoggedIn === true ? 
-            (navigate('/patientdetails')) 
-            // (navigate('/login'))
+            isLoggedIn === true ? 
+            (navigate('/patientdetails')) :
+            (navigate('/login'))
           }} />
         </ListItem>
+        { isLoggedIn &&
+          <ListItem button>
+            <ListItemText primary="Estimation of TBSA/TFR"  
+            onClick={()=>{navigate(`/humanmodel`, { state: { patientId: patientId } })}} />
+          </ListItem>
+          }
+        { isLoggedIn &&
+          <ListItem button>
+            <ListItemText primary="Burn Classification" onClick={()=>navigate('/uploadimage')}/>
+          </ListItem>
+        }
+        { isLoggedIn &&
+          <ListItem button>
+            <ListItemText primary="Burn Segmentation" onClick={()=>navigate('/uploadimage')}/>
+          </ListItem>
+        }
         <ListItem button>
-          <ListItemText primary="Estimation of TBSA/TFR"  onClick={()=>{
-            // isLoggedIn === true ? 
-            (navigate('/humanmodel')) 
-            // (navigate('/login'))
-          }} />
+          <ListItemText primary="About Us" onClick={()=>navigate('/about')}/>
         </ListItem>
         <ListItem button>
-          <ListItemText primary="Burn Classification" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Burn Segmentation" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="About" />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Contact Us" />
+          <ListItemText primary="Contact" onClick={()=>navigate('/contact')}/>
         </ListItem>
        
       </List>
@@ -129,29 +128,36 @@ const NavBar = () => {
               ByeBurns
             </Typography>
             <Hidden xsDown>
-              {
-                (<Button color="inherit" component={Link} to="/patientdetails">Home</Button>)
-                // (<Button color="inherit" component={Link} to="/login">Home</Button>
+              { isLoggedIn === true ?
+                (<Button color="inherit" component={Link} to="/patientdetails">Home</Button>) : 
+                (<Button color="inherit" component={Link} to="/login">Home</Button>)
               }
-              {
+              { !isLoggedIn && 
                 <Button color="inherit" component={Link} to="/signup">Signup</Button>
               }
-              { 
+              { !isLoggedIn &&
                 <Button color="inherit" component={Link} to="/login">Login</Button>
               }
-              { 
+              { isLoggedIn &&
                 <Button color="inherit" component={Link} to="/" 
                   onClick={()=>{
-                    // setIsLoggedIn(false);
+                    setIsLoggedIn(false);
                     toast.success("Logged Out")
                   }}>Log Out</Button>
               }
+              { 
+                <Button color="inherit" component={Link} to="/about">About Us</Button>
+              }
+              { 
+                <Button color="inherit" component={Link} to="/contact">Contact</Button>
+              }
               {
-                
+                isLoggedIn &&
                 <Button color='inherit'><FaRegUserCircle className='size-5'/></Button>
               }
 
               {
+                isLoggedIn && 
                 <div>
                 <Button onClick={openDrawerRight} className='bg-inherit'>
                 <img src={Hamburger} alt='' className='w-6 h-6' /></Button>
@@ -185,9 +191,11 @@ const NavBar = () => {
                     </svg>
                   </IconButton>
                   <div className='w-[300px] flex flex-col gap-3 rounded-md'>
-                    <button onClick={handleChange} value="humanmodel" className='h-12'>Estimation of TBSA/TFR</button>
-                    <button className='h-12'>Burn Classification</button>
-                    <button className='h-12'>Burn Segementation</button>
+                    <button onClick={()=>{navigate(`/humanmodel`, { state: { patientId: patientId } })}} value="humanmodel" className='h-12'>Estimation of TBSA/TFR</button>
+                    <button onClick={()=>navigate('/uploadimage')} className='h-12'>Burn Classification</button>
+                    <button onClick={()=>navigate('/uploadimage')} className='h-12'>Burn Segementation</button>
+                    {/* <button onClick={()=>navigate('/about')} className='h-12'>About Us</button>
+                    <button onClick={()=>navigate('/contact')} className='h-12'>Contact</button> */}
                   </div>
                 </div>
                 </Drawer>

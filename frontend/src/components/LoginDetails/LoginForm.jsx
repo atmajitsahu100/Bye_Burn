@@ -5,7 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";
 
-const LoginForm = () => {
+const LoginForm = ({setIsLoggedIn}) => {
   
   const navigate = useNavigate();
 
@@ -48,6 +48,7 @@ const LoginForm = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
+          setIsLoggedIn(true);
           navigate("/patientdetails");
         }, 1000);
       } else {
@@ -75,7 +76,7 @@ const LoginForm = () => {
     <>
       <section  className="bg-white dark:bg-gray-900 sm: h-screen">
         <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-14">
-          <Link to={('/patientdetails')} className=" flex flex-col items-center p-3">
+          <Link to={('/')} className=" flex flex-col items-center p-3">
               <img className=" w-24 h-12 mr-2  rounded-md" src={logoImage} alt="logo"/>   
               <div className=" text-4xl mb-2 text-red-600">ByeBurns</div>
           </Link>
@@ -134,7 +135,7 @@ const LoginForm = () => {
                         </div>
                         <button 
                         type="submit" 
-                        className="w-full text-white bg-primary-600 hover:bg-primary-700 
+                        className="w-full m-[auto] text-white bg-primary-600 hover:bg-primary-700 
                         focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium 
                         rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 
                         dark:hover:bg-primary-700 dark:focus:ring-primary-800 hover:shadow-lg

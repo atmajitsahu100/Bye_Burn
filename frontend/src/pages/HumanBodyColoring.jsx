@@ -40,9 +40,14 @@ function boundaryFill(context,f, x, y, fillColor, boundaryColor, timeoutPromise,
                 if (r === fillColor[0] && g === fillColor[1] && b === fillColor[2] && a === fillColor[3]) {
                     continue;
                 }
-                if (r === boundaryColor[0] && g === boundaryColor[1] && b === boundaryColor[2] && a === boundaryColor[3]) {
+                // if (r === boundaryColor[0] && g === boundaryColor[1] && b === boundaryColor[2] && a === boundaryColor[3]) {
+                //     continue;
+                // }
+
+                if (r !== 255 && g !== 255 && b !== 255) {
                     continue;
-                }
+                }           
+                
 
                 // Fill the pixel with the fill color.
                 data[index] = fillColor[0];
@@ -75,6 +80,10 @@ function boundaryFill(context,f, x, y, fillColor, boundaryColor, timeoutPromise,
 }
 
 function HumanBodyColoring() {
+
+    const [tbsa, setTbsa] = useState("");
+    const [tfr, setTfr] = useState("");
+
     const location = useLocation();
     const navigate = useNavigate();
     let { selectedImage ,patientId} = location.state || {};
@@ -175,34 +184,53 @@ function HumanBodyColoring() {
     const tsa=121900;
     function calculateTBSA() {
         const totalSurfaceArea=(totalMarkedPixels/tsa)*100;
-        alert(totalSurfaceArea+' %');
+        const tbsa = totalSurfaceArea.toFixed(4);
+        setTbsa(tbsa+'%');
     }
 
     function calculateTFR() {
         const totalSurfaceArea=(totalMarkedPixels/tsa);
-        alert(2*totalSurfaceArea*100);
+        const tfr = (totalSurfaceArea*2*75).toFixed(4);
+        setTfr(tfr);
     }
 
     return (
-        <div>
-             <div style={{ position: 'absolute', top: 70, right: 0, marginRight: '10px', marginTop: '10px' }}>
-                <button onClick={() => handleColorSelection([238, 75, 43,100])} style={{ marginRight: '10px', backgroundColor:'rgba(255, 0, 0, 0.5)' }}>1 Degree</button>
-                <button onClick={() => handleColorSelection([255, 0, 0, 130])} style={{ marginRight: '10px', backgroundColor:'rgba(255, 30, 0, 0.65)' }}>2 Degree</button>
-                <button onClick={() => handleColorSelection([255, 0, 0, 255])} style={{ marginRight: '10px', backgroundColor:'rgba(255, 0, 0, 255)' }}>3 Degree</button>
-                <button onClick={() => handleColorSelection([0, 255, 0, 255])} style={{ marginRight: '10px' ,backgroundColor:'green' }}>Heal</button>
+        <>
+            <div className='absolute right-0 mr-[30px] sm:[550px] md:mt-[550px] w-[500px] lg:mt-[30px]'>
+                <p className='font-bold text-xl text-red-900 flex justify-center'>Select The Burn Degree for Mark On Body</p>
+                <div className='flex justify-between w-full'>
+                    <button onClick={() => handleColorSelection([255, 236, 25, 255])} className='bg-1-degree text-black font-semibold hover:bg-1-degree hover:shadow-md'>1 Degree</button>
+                    <button onClick={() => handleColorSelection([255, 152, 0, 255])} className='bg-2-degree text-black font-semibold hover:bg-2-degree hover:shadow-md'>2 Degree</button>
+                    <button onClick={() => handleColorSelection([246, 65, 45, 255])} className='bg-3-degree text-white font-semibold hover:bg-3-degree hover:shadow-lg'>3 Degree</button>
+                    <button onClick={() => handleColorSelection([0, 134, 49, 255])} className=' bg-heal text-white font-semibold hover:bg-heal hover:shadow-lg'>Heal</button>
+                </div>
+                <div className='flex flex-col w-full items-start gap-2 p-0 justify-center mt-4'>
+                    <div className='flex flex-col gap-3 lg:flex-row'>
+                        <button onClick={calculateTBSA}>Calculate TBSA</button>
+                        {
+                            tbsa !== "" ? 
+                            (<p className='mt-7 font-semibold text-2xl'>The TBSA is : {tbsa}</p>) :
+                            (<div></div>)
+                        }
+                    </div>
+                    <div className='flex flex-col gap-3 lg:flex-row'>
+                        <button onClick={calculateTFR}>Calculate TFR</button>
+                        {
+                            tfr !== "" ? 
+                            (<p className='mt-7 font-semibold text-2xl'>The TFR is : {tfr}</p>) :
+                            (<div></div>)
+                        }
+                    </div>
+                    <div className=' w-full flex justify-center mt-4'>
+                        <button onClick={saveMarkedImage}>Save Marked Image</button>
+                    </div>
+                </div>
             </div>
-            <h1>Human Body Coloring</h1>
+            
             <div className='mx-[400px]'>
-                <img src={updatedImage} alt="Human Body" onClick={handleBodyPartClick} style={{ cursor: 'crosshair' }} />
+                <img src={updatedImage} alt="Human Body" onClick={handleBodyPartClick} className=' cursor-crosshair' />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px', width: '50%', margin: 'auto' }}>
-                <button onClick={calculateTBSA}>Calculate TBSA</button>
-                <button onClick={calculateTFR}>Calculate TFR</button>
-            </div>
-            <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                <button onClick={saveMarkedImage}>Save Marked Image</button>
-            </div>
-        </div>
+        </>
     );
 }
 

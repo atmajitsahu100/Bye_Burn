@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import logoImage from '../Logo/ByeBurns-logo.png';
 import { Link, useNavigate } from 'react-router-dom';
-import NavBar from '../../pages/Navbar';
 import { ToastContainer,toast } from 'react-toastify';
+
+
 const AddNewPatient = () => {
   const [formData, setFormData] = useState({
     firstName: '',
