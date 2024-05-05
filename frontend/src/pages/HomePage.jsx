@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "../styles/HomePage.css";
 
-const HomePage = ({isLoggedIn}) => {
+const HomePage = () => {
     const handleLogout = () => {
       console.log("Logged out");
     };

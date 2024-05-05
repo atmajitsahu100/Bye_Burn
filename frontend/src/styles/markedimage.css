@@ -1,0 +1,22 @@
+.image-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px; /* Adjust margin as needed */
+  }
+  
+  .edit-button {
+    position: absolute;
+    top: 10px; /* Adjust top position as needed */
+    right: 10px; /* Adjust right position as needed */
+    padding: 5px 10px;
+    background-color: #007bff; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+  }
+  

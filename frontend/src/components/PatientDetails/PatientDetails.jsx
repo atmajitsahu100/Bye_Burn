@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Card from './Card';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const PatientDetails = () => {
     
@@ -44,10 +45,10 @@ const PatientDetails = () => {
                 </div>
                 <div className='h-fit flex flex-col justify-between m-5 sm:flex-row sm:items-center gap-2'>
                     <div className="xl:w-96 flex items-center justify-center">
-                        <div className="relative mb-4 flex w-full flex-wrap items-stretch">
+                        <div className="relative flex w-full flex-wrap items-stretch ">
                             <input
                                 type="search"
-                                className="relative m-0 block flex-auto rounded-md border border-solid
+                                className="mt-5 h-10 relative m-0 block flex-auto rounded-md border border-solid
                                 border-neutral-400 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal 
                                 leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3]
                                 focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] 
@@ -66,14 +67,16 @@ const PatientDetails = () => {
                             </button>
                         </div>
                     </div>
-                    <button className='mt-[-10px] font-semibold' onClick={()=> navigate('/addnewpatient')}>Add New Patient</button>
+                    <button className='mt-[19px] h-10 font-semibold' onClick={()=> navigate('/addnewpatient')}>Add New Patient</button>
                 
                 </div>
 
                 <div className='w-full h-1 bg-blue-700 rounded-md items-center'></div>
                 <div className='bg-transparent grid grid-cols-1 gap-4 m-3 p-2 rounded-md md:grid-cols-2 xl:grid-cols-3'>
                     {models.map((model) => (
+                        <Link key={model._id} to={`/buttons/${model._id}`}>
                         <Card key={model._id} {...model}></Card>
+                        </Link>
                     ))}
                 </div>
             </div>

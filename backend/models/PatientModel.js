@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const patientSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -23,6 +22,7 @@ const patientSchema = new mongoose.Schema({
  weight:{
     type:Number,
  },
+ markedImages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'MarkedImage' }]
 });
 
 // userSchema.pre("save", async function () {

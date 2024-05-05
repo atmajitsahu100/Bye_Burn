@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 
-const Card = ({id, name, image}) => {
+const Card = ({ id, name, image, onSelectImage }) => {
 
   const [Id, setId] = useState(id);
 
-    function clickHandler(){
-      setId(id);
-      console.log( `${Id} Image selected`);
-    }
+   const handleClick = () => {
+    onSelectImage(image);
+   };
   return (
-      <div className='flex flex-col justify-center items-center p-2 w-fit h-full' onClick={clickHandler}>
+      <div className='flex flex-col justify-center items-center p-2 w-fit h-full' onClick={handleClick}>
           <label className='text-2xl font-semibold m-1 text-center'>
             <img src={image} alt='' className='w-fit h-fit rounded-md'/> 
             <input

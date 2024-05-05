@@ -21,5 +21,5 @@ const isAuthenticated = async (req, res, next) => {
     return res.redirect('http://localhost:3000/login');
   }
 };
-
+ 
 module.exports = isAuthenticated;

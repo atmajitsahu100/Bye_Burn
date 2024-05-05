@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import logoImage from '../Logo/ByeBurns-logo.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer,toast } from 'react-toastify';
+
 
 const AddNewPatient = () => {
   const [formData, setFormData] = useState({
@@ -28,8 +30,17 @@ const AddNewPatient = () => {
         body: JSON.stringify(formData)
       });
       if (response.ok) {
+        toast.success("Patient added successfully",{
+          position: "top-right",
+      });
         console.log("patient added successfully")
+        setTimeout(() => {
+          navigate('/patientdetails');
+        }, 1000);
       } else {
+        toast.error("error while adding patient",{
+          position: "bottom-left",
+      });
         console.log("error");
       }
     } catch (error) {
@@ -163,6 +174,7 @@ const AddNewPatient = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </>
   );
 };
