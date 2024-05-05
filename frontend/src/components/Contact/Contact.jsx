@@ -17,18 +17,18 @@ const Contact = () => {
   // if(email.length > 17) display = email.substring(0, 13)+"..."
 
   return (
-      <div className='w-full h-[100vh] flex justify-center items-center p-3'>
+      <div className='w-full h-full flex justify-center items-center p-3'>
         <div className='w-9/12 h-[90vh] flex flex-col'>
           
-          <div className='w-full h-[50%] flex justify-center items-center p-4'>
+          <div className='w-full h-fit flex justify-center items-center p-4'>
             <div className='w-3/12 bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
               <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
                 <img src={mamImage} alt='Image' className='w-18 h-18 rounded-full'/>
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
                 <div className='w-full flex flex-col gap-y-2'>
                   <div><p className='font-semibold text-xl text-gray-700 text-center gap-y-2'><span>Dr. Joohi Chauhan</span></p></div>
-                  <Link to={"#"} className='flex font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
-                    hover:cursor-pointer'
+                  <Link to={"#"} className='flex flex-col font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
+                    hover:cursor-pointer xl:flex-row'
                     onClick={()=>window.location.href = `mailto:joohi@mnnit.ac.in`}>
                     <IoIosMail className='mt-1 mx-2'/>
                     <p><span>joohi@mnnit.ac.in</span></p>
@@ -39,7 +39,7 @@ const Contact = () => {
             </div>
           </div>
           
-          <div className='w-full h-[50%] flex justify-center items-center p-4 gap-x-3'>
+          <div className='w-full h-fit flex justify-center items-center p-4 gap-x-3'>
             
             <div className='w-3/12 bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
               <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
@@ -47,8 +47,8 @@ const Contact = () => {
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
                 <div className='w-full flex flex-col gap-y-2'>
                   <div><p className='font-semibold text-xl text-gray-700 text-center gap-y-2'><span>Tejasvee Rathour</span></p></div>
-                  <Link to={"#"} className='flex font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
-                    hover:cursor-pointer' 
+                  <Link to={"#"} className='flex flex-col font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
+                    hover:cursor-pointer xl:flex-row' 
                     onClick={()=>window.location.href = `mailto:tejasvee.2022ca109@mnnit.ac.in`}>
                     <IoIosMail className='mt-1 mx-2' /><p><span>tejasvee.2022ca109...</span></p>
                   </Link>
@@ -68,8 +68,8 @@ const Contact = () => {
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
                 <div className='w-full flex flex-col gap-y-2'>
                   <div><p className='font-semibold text-xl text-gray-700 text-center gap-y-2'><span>Kishan Ahuja</span></p></div>
-                  <Link to={'#'} className='flex font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
-                    hover:cursor-pointer' onClick={()=>window.location.href = `mailto:kishan.2022ca045@mnnit.ac.in`}>
+                  <Link to={'#'} className='flex flex-col font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
+                    hover:cursor-pointer xl:flex-row' onClick={()=>window.location.href = `mailto:kishan.2022ca045@mnnit.ac.in`}>
                     <IoIosMail className='mt-1 mx-2' /><p className=''><span>kishan.2022ca045...</span></p>
                   </Link>
 
@@ -88,8 +88,8 @@ const Contact = () => {
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
                 <div className='w-full flex flex-col gap-y-2'>
                   <div><p className='font-semibold text-xl text-gray-700 text-center gap-y-2'><span>Atmajit Sahoo</span></p></div>
-                  <Link to={'#'} className='flex font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
-                    hover:cursor-pointer' onClick={()=>window.location.href = `mailto:atmajit.2022ca015@mnnit.ac.in`}>
+                  <Link to={'#'} className='flex flex-col font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
+                    hover:cursor-pointer xl:flex-row' onClick={()=>window.location.href = `mailto:atmajit.2022ca015@mnnit.ac.in`}>
                     <IoIosMail className='mt-1 mx-2' /><p className=''><span>atmajit.2022ca015...</span></p>
                   </Link>
 
@@ -108,8 +108,8 @@ const Contact = () => {
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
                 <div className='w-full flex flex-col gap-y-2'>
                   <div><p className='font-semibold text-xl text-gray-700 text-center gap-y-2'><span>Sonu Acharya</span></p></div>
-                  <Link to={'#'} className='flex font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
-                    hover:cursor-pointer' onClick={()=>window.location.href = `mailto:sonu.2022ca104@mnnit.ac.in`}>
+                  <Link to={'#'} className='flex flex-col font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
+                    hover:cursor-pointer xl:flex-row' onClick={()=>window.location.href = `mailto:sonu.2022ca104@mnnit.ac.in`}>
                     <IoIosMail className='mt-1 mx-2' /><p className=''><span>sonu.2022ca104...</span></p>
                   </Link>
 
