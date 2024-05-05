@@ -16,6 +16,7 @@ import HumanBodyColoring from "./pages/HumanBodyColoring";
 import MarkedImages from "./pages/MarkedImages";
 import EditHumanModel from "./pages/EditHumanModel";
 import UploadImagePage from "./pages/UploadImagePage";
+import UploadSegment from "./pages/UploadSegment";
 //import PatientDetails from "./components/PatientDetails/PatientDetails";
 
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="/editimage" element={<EditHumanModel/>}/>
           <Route path="/buttons/:patientId" element={<ButtonsPage />}/>
           <Route path="/uploadimage" element={<UploadImagePage />}/>
+          <Route path="/uploadsegment" element={<UploadSegment />}/>
           
       </Routes>
     </div>

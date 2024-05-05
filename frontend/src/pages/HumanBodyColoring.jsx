@@ -4,7 +4,7 @@ import humanBodyImage from './b4_updated.png'; // Import the static image
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 function boundaryFill(context,f, x, y, fillColor, boundaryColor, timeoutPromise,setTotalMarkedPixels) {
-    return new Promise((resolve, reject) => {
+   
         const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
         const { data, width, height } = imageData;
        
@@ -72,9 +72,6 @@ function boundaryFill(context,f, x, y, fillColor, boundaryColor, timeoutPromise,
         }
 
         // Calculate the total surface area of the marked regions
-
-        resolve();
-    });
 }
 
 function HumanBodyColoring() {
@@ -103,7 +100,7 @@ function HumanBodyColoring() {
         const canvas = document.createElement('canvas');
         canvas.width = event.target.width;
         canvas.height = event.target.height;
-        const context = canvas.getContext('2d');
+        const context = canvas.getContext('2d',{ willReadFrequently: true });
         context.drawImage(event.target, 0, 0);
 
         const pixelColor = getColorAtPixel(context, x, y);

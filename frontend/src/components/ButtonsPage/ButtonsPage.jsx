@@ -26,7 +26,7 @@ const ButtonsPage = () => {
             </div>
             <div className='w-full flex flex-row justify-between p-3 bg-slate-300 rounded-md mb-4'>
                 <h1 className=' font-bold text-2xl'>For Burn Segmentation</h1>
-                <button className='hover:bg-red-500' onClick={()=>navigate('/uploadimage')}>Click Here</button>
+                <button className='hover:bg-red-500' onClick={()=>navigate('/uploadsegment')}>Click Here</button>
             </div>
             <div className='w-full flex flex-row justify-between p-3 bg-slate-300 rounded-md'>
                 <h1 className=' font-bold text-2xl'>Show Saved Models</h1>
