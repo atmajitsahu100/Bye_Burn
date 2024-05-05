@@ -18,10 +18,10 @@ const Contact = () => {
 
   return (
       <div className='w-full h-full flex justify-center items-center p-3'>
-        <div className='w-9/12 h-[90vh] flex flex-col'>
+        <div className='w-9/12 h-10/12 flex flex-col'>
           
           <div className='w-full h-fit flex justify-center items-center p-4'>
-            <div className='w-3/12 bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
+            <div className='bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg xl:w-3/12 lg:w-4/12 md:w-6/12 xs:w-full sm:w-full'>
               <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
                 <img src={mamImage} alt='Image' className='w-18 h-18 rounded-full'/>
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
@@ -39,9 +39,10 @@ const Contact = () => {
             </div>
           </div>
           
-          <div className='w-full h-fit flex justify-center items-center p-4 gap-x-3'>
+          {/* <div className='w-full h-fit flex justify-center items-center p-4 gap-x-3'> */}
+          <div className='w-full h-fit grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 rounded-md p-2'>
             
-            <div className='w-3/12 bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
+            <div className='w-full bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
               <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
                 <img src={tej} alt='Image' className='w-20 h-20 rounded-full'/>
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
@@ -62,7 +63,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className='w-3/12 bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
+            <div className='w-full bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
               <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
                 <img src={kishan} alt='Image' className='w-20 h-20 rounded-full'/>
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
@@ -82,7 +83,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className='w-3/12 bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
+            <div className='w-full bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
               <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
                 <img src={atmjit} alt='Image' className='w-20 h-20 rounded-full'/>
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
@@ -102,7 +103,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className='w-3/12 bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
+            <div className='w-full bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
               <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
                 <img src={sonu} alt='Image' className='w-20 h-20 rounded-full'/>
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
