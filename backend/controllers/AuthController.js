@@ -16,8 +16,11 @@ module.exports.Signup = async (req, res, next) => {
       password,
       confirm_password,
       createdAt,
+      specialization,
+      licenseNumber,
     } = req.body.formData;
-
+    // console.log(specialization);
+    // console.log(licenseNumber);
 
     if (password === confirm_password) {
       const existingUser = await User.findOne({ email });
@@ -35,6 +38,8 @@ module.exports.Signup = async (req, res, next) => {
         lastName,
         password : hashedPassword,
         createdAt,
+        specialization,
+        licenseNumber,
       });
       const token = createSecretToken(user._id);
       res.cookie("token", token, {

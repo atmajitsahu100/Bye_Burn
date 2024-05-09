@@ -40,13 +40,13 @@ function boundaryFill(context,f, x, y, fillColor, boundaryColor, timeoutPromise,
                 if (r === fillColor[0] && g === fillColor[1] && b === fillColor[2] && a === fillColor[3]) {
                     continue;
                 }
-                // if (r === boundaryColor[0] && g === boundaryColor[1] && b === boundaryColor[2] && a === boundaryColor[3]) {
-                //     continue;
-                // }
-
-                if (r !== 255 && g !== 255 && b !== 255) {
+                if (r <=40 && g<=30 && b <=30) {
                     continue;
-                }           
+                }
+
+                // if (r !== 255 && g !== 255 && b !== 255&&(a>=250&&a<=260)||r===0&&g===0&&b===0&&a===255) {
+                //     continue;
+                // }           
                 
 
                 // Fill the pixel with the fill color.
@@ -56,12 +56,14 @@ function boundaryFill(context,f, x, y, fillColor, boundaryColor, timeoutPromise,
                 data[index + 3] = fillColor[3];
               
                 markedPixels++;
-
+                
+                
                 if(f===0){
                     setTotalMarkedPixels(prevCount => prevCount + 1);
-                }else{
+                }else if(f===1){
                     setTotalMarkedPixels(prevCount => prevCount - 1);
                 }
+            
                
                 // Add neighboring pixels to the stack.
                 stack.push([currentX - 1, currentY]);
@@ -117,16 +119,38 @@ function HumanBodyColoring() {
         let fillColor;
         var f=0;
        // 238, 75, 43,100
-        if ((pixelColor[0] === 255 && pixelColor[1] === 0 && pixelColor[2] === 0)||(pixelColor[0] === 0 && pixelColor[1] === 255 && pixelColor[2] === 0)||(pixelColor[0] !== 255)) {
-            // If the pixel is already red, color it white
-            fillColor = [255, 255, 255, 255]; // White color
-            f=1;
-        } else {
-            // If the pixel is not red, color it red
-           
-            fillColor = colorSelection;
-            if((fillColor[0] === 0 && fillColor[1] === 255 && fillColor[2] === 0)){
+        if ((pixelColor[2] !== 255)) {
+            if((colorSelection[0] === 0 &&colorSelection[2] ===49)&&(pixelColor[0] !== 255 &&pixelColor[2] !==25)){
+                fillColor=colorSelection;
                 f=1;
+            }
+            else if((colorSelection[0] === 0 &&colorSelection[2] ===49)&&(pixelColor[0] === 255 &&pixelColor[2] ===25)){
+                fillColor=colorSelection;
+                f=2;
+            }
+            else if((colorSelection[0] === 255 &&colorSelection[2] ===25)&&(pixelColor[0] !== 0 &&pixelColor[2] !==49)){
+                fillColor=colorSelection;
+                f=1;
+            }
+            else if((colorSelection[0] === 255 &&colorSelection[2] ===25)&&(pixelColor[0] === 0 &&pixelColor[2] ===49)){
+                fillColor=colorSelection;
+                f=2;
+            }
+            else if(pixelColor[0]===colorSelection[0]&&colorSelection[1]===pixelColor[1]&&pixelColor[2]===colorSelection[2]){
+             fillColor = [255, 255, 255, 255]; // White color
+              f=1;
+            }else{
+                fillColor=colorSelection;
+                f=2;
+                if((pixelColor[0]===0&&pixelColor[2]===49)||(pixelColor[0]===255&&pixelColor[2]===25)){
+                 f=0;   
+                }
+            }
+        } else {
+            fillColor = colorSelection;
+            f=0
+            if((fillColor[0] === 0 &&fillColor[2] ===49)||(fillColor[0] === 255 &&fillColor[2] ===25)){
+                f=2;
             }
         }
 
@@ -183,14 +207,23 @@ function HumanBodyColoring() {
     }
     const tsa=121900;
     function calculateTBSA() {
-        const totalSurfaceArea=(totalMarkedPixels/tsa)*100;
-        const tbsa = totalSurfaceArea.toFixed(4);
+        if(totalMarkedPixels<0){
+            setTotalMarkedPixels(0);
+        }
+        let totalSurfaceArea=(totalMarkedPixels/tsa)*100;
+        let tbsa = totalSurfaceArea.toFixed(4);
+        if(tbsa<0){
+            tbsa=0;
+        }
         setTbsa(tbsa+'%');
     }
 
     function calculateTFR() {
-        const totalSurfaceArea=(totalMarkedPixels/tsa);
-        const tfr = (totalSurfaceArea*2*75).toFixed(4);
+        if(totalMarkedPixels<0){
+            setTotalMarkedPixels(0);
+        }
+        let totalSurfaceArea=(totalMarkedPixels/tsa);
+        let tfr = (totalSurfaceArea*2*75).toFixed(4);
         setTfr(tfr);
     }
 

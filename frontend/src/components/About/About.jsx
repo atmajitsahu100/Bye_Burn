@@ -28,6 +28,13 @@ const About = () => {
         </div>
       </div>
 
+      <div className='flex justify-center'>
+        <div className='flex flex-col'>
+          <img src={LOS} alt='Layers Of Skin' className='w-[450px] mb-5'  />
+          <p className='text-xl text-gray-700'><span className='text-xl font-semibold text-gray-700'>Layers of Skin</span> (https://training.seer.cancer.gov/melanoma/anatomy/layers.html)</p>
+        </div>
+      </div>
+
       <div>
         <p className='w-full h-fit text-3xl font-bold text-blue-700 text-center m-5'>Burn vs Wound</p>
         <div className='w-[97%] m-5 px-5 py-2'>
@@ -43,13 +50,6 @@ const About = () => {
             Of all the wounds Burn wounds require separate medical super specialist, involve single organ but affect 
             almost all systems of the body, making generalized disorder.
           </p>
-        </div>
-      </div>
-
-      <div className='flex justify-center'>
-        <div className='flex flex-col'>
-          <img src={LOS} alt='Layers Of Skin' className='w-[450px] mb-5'  />
-          <p className='text-xl text-gray-700'><span className='text-xl font-semibold text-gray-700'>Layers of Skin</span> (https://training.seer.cancer.gov/melanoma/anatomy/layers.html)</p>
         </div>
       </div>
 

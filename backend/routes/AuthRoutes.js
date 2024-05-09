@@ -8,7 +8,7 @@ const upload = multer({ storage: storage });
 const uploadController = require('./../controllers/uploadController')
 const {UploadSegment} =require('../controllers/UploadSegmentController')
 
-const {AddPatient, GetPatient}=require("../controllers/AddPatientController");
+const {AddPatient, GetPatient , PatientDetails}=require("../controllers/AddPatientController");
 const { MarkedImage,getAllMarkedImages } = require("../controllers/SegmentController");
 router.post("/addpatient",AddPatient);
 router.get("/getpatient",GetPatient);
@@ -19,5 +19,6 @@ router.post("/markedimage", MarkedImage);
 router.get("/allmarkedimages/:patientId",getAllMarkedImages);
 router.post("/upload", upload.single("image"),uploadController.uploadImage);
 router.post("/uploadandsegment", upload.single("image"),UploadSegment);
+router.get("/patientdetails/:patientId",PatientDetails);
 
 module.exports = router;
