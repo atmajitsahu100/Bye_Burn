@@ -3,6 +3,7 @@ import axios from 'axios'
 import humanBodyImage from './b4_updated.png'; // Import the static image
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
 function boundaryFill(context,f, x, y, fillColor, boundaryColor, timeoutPromise,setTotalMarkedPixels) {
     return new Promise((resolve, reject) => {
         
@@ -41,11 +42,11 @@ function boundaryFill(context,f, x, y, fillColor, boundaryColor, timeoutPromise,
                 if (r === fillColor[0] && g === fillColor[1] && b === fillColor[2] && a === fillColor[3]) {
                     continue;
                 }
-                // if (r === boundaryColor[0] && g === boundaryColor[1] && b === boundaryColor[2] && a === boundaryColor[3]) {
-                //     continue;
-                // }
+                if (r === boundaryColor[0] && g === boundaryColor[1] && b === boundaryColor[2] && a === boundaryColor[3] && f===1) {
+                    continue;
+                }
 
-                if (r !== 255 && g !== 255 && b !== 255) {
+                if (r !== 255 && g !== 255 && b !== 255 && f===0) {
                     continue;
                 }           
                 
@@ -129,7 +130,7 @@ function HumanBodyColoring() {
             // If the pixel is not red, color it red
            
             fillColor = colorSelection;
-            if((fillColor[0] === 0 && fillColor[1] === 255 && fillColor[2] === 0)){
+            if((fillColor[0] === 0 && fillColor[1] === 255  && fillColor[2] === 0)){
                 f=1;
             }
         }

@@ -96,7 +96,7 @@ const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
           </ListItem>
         }
         <ListItem button>
-          <ListItemText primary="About Us" onClick={()=>navigate('/about')}/>
+          <ListItemText primary="About" onClick={()=>navigate('/about')}/>
         </ListItem>
         <ListItem button>
           <ListItemText primary="Contact" onClick={()=>navigate('/contact')}/>
@@ -146,7 +146,7 @@ const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
                   }}>Log Out</Button>
               }
               { 
-                <Button color="inherit" component={Link} to="/about">About Us</Button>
+                <Button color="inherit" component={Link} to="/about">About</Button>
               }
               { 
                 <Button color="inherit" component={Link} to="/contact">Contact</Button>

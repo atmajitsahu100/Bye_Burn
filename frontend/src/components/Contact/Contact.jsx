@@ -124,6 +124,12 @@ const Contact = () => {
             </div>
 
           </div>
+          <br />
+          <div className='w-full mb-5'>
+          <p className='text-lg font-semibold text-gray-700 text-center'>
+            We would like to acknowledge the support of Indian Institute of Technology Ropar (IIT Ropar) and Safdarjung Burn Hospital, Delhi.
+          </p>
+        </div>
         </div>
       </div>
       // </div>
