@@ -12,10 +12,6 @@ import { FaLinkedin } from "react-icons/fa";
 
 const Contact = () => {
 
-  // const models = data;
-  // let email = "tejasvee.2022ca109@mnnit.ac.in", display;
-  // if(email.length > 17) display = email.substring(0, 13)+"..."
-
   return (
       <div className='w-full h-full flex justify-center items-center p-3'>
         <div className='w-9/12 h-10/12 flex flex-col'>
@@ -39,8 +35,27 @@ const Contact = () => {
             </div>
           </div>
           
-          {/* <div className='w-full h-fit flex justify-center items-center p-4 gap-x-3'> */}
           <div className='w-full h-fit grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 rounded-md p-2'>
+            
+          <div className='w-full bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
+              <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
+                <img src={atmjit} alt='Image' className='w-20 h-20 rounded-full'/>
+                <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
+                <div className='w-full flex flex-col gap-y-2'>
+                  <div><p className='font-semibold text-xl text-gray-700 text-center gap-y-2'><span>Atmajit Sahoo</span></p></div>
+                  <Link to={'#'} className='flex flex-col font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
+                    hover:cursor-pointer xl:flex-row' onClick={()=>window.location.href = `mailto:atmajit.2022ca015@mnnit.ac.in`}>
+                    <IoIosMail className='mt-1 mx-2' /><p className=''><span>atmajit.2022ca015...</span></p>
+                  </Link>
+
+                  <Link to={'https://www.linkedin.com/in/atmajit-sahoo-9459ab190'} className='flex font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
+                    hover:cursor-pointer'>
+                    <FaLinkedin className='mt-1 mx-2' /><p><span>Atmajit Sahoo</span></p>
+                  </Link>
+                  <div><p className='font-semibold text-xl text-gray-700 text-center gap-y-2'><span>MCA</span></p></div>
+                </div>
+              </div>
+            </div>
             
             <div className='w-full bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
               <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
@@ -85,26 +100,6 @@ const Contact = () => {
 
             <div className='w-full bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
               <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
-                <img src={atmjit} alt='Image' className='w-20 h-20 rounded-full'/>
-                <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
-                <div className='w-full flex flex-col gap-y-2'>
-                  <div><p className='font-semibold text-xl text-gray-700 text-center gap-y-2'><span>Atmajit Sahoo</span></p></div>
-                  <Link to={'#'} className='flex flex-col font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
-                    hover:cursor-pointer xl:flex-row' onClick={()=>window.location.href = `mailto:atmajit.2022ca015@mnnit.ac.in`}>
-                    <IoIosMail className='mt-1 mx-2' /><p className=''><span>atmajit.2022ca015...</span></p>
-                  </Link>
-
-                  <Link to={'https://www.linkedin.com/in/atmajit-sahoo-9459ab190'} className='flex font-semibold text-xl text-gray-700 text-center gap-y-2 items-center justify-center 
-                    hover:cursor-pointer'>
-                    <FaLinkedin className='mt-1 mx-2' /><p><span>Atmajit Sahoo</span></p>
-                  </Link>
-                  <div><p className='font-semibold text-xl text-gray-700 text-center gap-y-2'><span>MCA</span></p></div>
-                </div>
-              </div>
-            </div>
-
-            <div className='w-full bg-white h-full rounded-lg border border-blue-500 shadow-md hover:shadow-lg'>
-              <div className='w-full flex flex-col justify-center items-center p-2 gap-y-2'>
                 <img src={sonu} alt='Image' className='w-20 h-20 rounded-full'/>
                 <div className='w-4/12 h-1 bg-blue-500 rounded-xl my-4'></div>
                 <div className='w-full flex flex-col gap-y-2'>
@@ -122,7 +117,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-
+          
           </div>
           <br />
           <div className='w-full mb-5'>

@@ -67,7 +67,7 @@ const PatientDetails = () => {
                             </button>
                         </div>
                     </div>
-                    <button className='mt-[19px] h-10 font-semibold' onClick={()=> navigate('/addnewpatient')}>Add New Patient</button>
+                    <button className='mt-[19px] h-10 font-semibold ml-0' onClick={()=> navigate('/addnewpatient')}>Add New Patient</button>
                 
                 </div>
 

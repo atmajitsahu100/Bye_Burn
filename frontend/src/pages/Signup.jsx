@@ -123,8 +123,8 @@ const Signup = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/home");
-        }, 1000);
+          navigate("/patientdetails");
+        }, 100);
       } else {
         handleError(message);
       }

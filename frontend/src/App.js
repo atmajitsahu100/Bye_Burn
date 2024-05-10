@@ -18,6 +18,7 @@ import EditHumanModel from "./pages/EditHumanModel";
 import UploadImagePage from "./pages/UploadImagePage";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
+import UploadSegment from "./pages/UploadSegment";
 //import PatientDetails from "./components/PatientDetails/PatientDetails";
 
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="/uploadimage" element={<UploadImagePage />}/>
           <Route path="/about" element={<About />}/>
           <Route path="/contact" element={<Contact />}/>
+          <Route path="/uploadsegment" element={<UploadSegment />}/>
           
       </Routes>
     </div>

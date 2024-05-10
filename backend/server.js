@@ -6,7 +6,7 @@ const connectDB = require("./config/dbConnect");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/AuthRoutes");
-const uploadRouter = require("./routes/uploadRoutes");
+// const uploadRouter = require("./routes/uploadRoutes");
 
 //const tf = require('@tensorflow/tfjs-node');
 
@@ -60,7 +60,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use("/", authRoute);
-app.use("/api/upload", uploadRouter);
+// app.use("/api/upload", uploadRouter);
 
 
 // Connect to MongoDB and start the server

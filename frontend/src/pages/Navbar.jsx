@@ -40,6 +40,13 @@ const useStyles = makeStyles((theme) => ({
     width: 250,
   },
 }));
+const handleLogout = () => {
+  // Clear JWT token from local storage or session storage
+  localStorage.removeItem('jwtToken'); // Or sessionStorage.removeItem('jwtToken');
+
+  // setIsLoggedIn(false);
+  toast.success("Logged Out");
+};
 
 const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
   
@@ -143,7 +150,7 @@ const NavBar = ({isLoggedIn, setIsLoggedIn}) => {
                   onClick={()=>{
                     setIsLoggedIn(false);
                     toast.success("Logged Out")
-                  }}>Log Out</Button>
+                  }}>Logout</Button>
               }
               { 
                 <Button color="inherit" component={Link} to="/about">About</Button>

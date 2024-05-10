@@ -47,8 +47,25 @@ const GetPatient = async (req, res, next) => {
         return res.status(500).json({ error: "Internal Server Error" });
     }
 };
+const PatientDetails=async(req,res,next) => {
+    try{
+     const { patientId } = req.params;
+    //  console.log(patientId);
+     const patient = await Patient.findById(patientId).select('-markedImages');
+    //  console.log(patient);
+     if (patient) {
+        res.json(patient);
+    } else {
+        res.status(404).json({ error: 'Patient not found' });
+    }
+    }catch(error){
+        console.error('Error:', error);
+        return res.status(500).json({ error: "Internal Server Error" });
+    }
+}
 
 module.exports = {
     AddPatient: AddPatient,
-    GetPatient: GetPatient
+    GetPatient: GetPatient,
+    PatientDetails:PatientDetails,
 };

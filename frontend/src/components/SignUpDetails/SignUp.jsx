@@ -31,6 +31,8 @@ const Signup = () => {
       country: "",
       city: "",
     },
+    specialization:"",
+    licenseNumber: "",
     education: {
       institution: "",
       degree: "",
@@ -126,8 +128,8 @@ const Signup = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/home");
-        }, 1000);
+          navigate("/login");
+        }, 100);
       } else {
         handleError(message);
       }

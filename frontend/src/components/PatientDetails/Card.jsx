@@ -30,11 +30,11 @@ const Card = ({_id,firstName,lastName,age,gender}) => {
         </div>
         <div className='flex flex-row items-end justify-end text-gray-600 gap-3 mr-2'>
           <MdDelete className=' size-10 hover:text-black' />
-          {
+          {/* {
             Fav === false ? 
             (<FaRegStar className='size-10 hover:text-black' onClick={changeHandler}/>) : 
             (<FaStar className='size-10 text-black' onClick={changeHandler}/>)
-          }
+          } */}
         </div>
       
     </div>
