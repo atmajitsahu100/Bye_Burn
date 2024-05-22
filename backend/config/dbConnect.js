@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const { DB_URL } = process.env;
+const { DB_URL,LOCAL_DB } = process.env;
 
 async function dbConnect() {
 
     
   mongoose
-  .connect(DB_URL, {
+  .connect(LOCAL_DB, {
     
       useNewUrlParser: true,
       useUnifiedTopology: true,

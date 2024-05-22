@@ -15,10 +15,10 @@ import PatientProfile from "./components/PatientDetails/PatientProfile";
 import HumanBodyColoring from "./pages/HumanBodyColoring";
 import MarkedImages from "./pages/MarkedImages";
 import EditHumanModel from "./pages/EditHumanModel";
-import UploadImagePage from "./pages/UploadImagePage";
+import ImageClassification from "./pages/ImageClassification";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
-import UploadSegment from "./pages/UploadSegment";
+import ImageSegmentation from "./pages/ImageSegmentation";
 //import PatientDetails from "./components/PatientDetails/PatientDetails";
 
 
@@ -44,10 +44,10 @@ function App() {
           <Route path="/markedimages" element={<MarkedImages/>}/>
           <Route path="/editimage" element={<EditHumanModel/>}/>
           <Route path="/buttons/:patientId" element={<ButtonsPage />}/>
-          <Route path="/uploadimage" element={<UploadImagePage />}/>
+          <Route path="/uploadimage" element={<ImageClassification />}/>
           <Route path="/about" element={<About />}/>
           <Route path="/contact" element={<Contact />}/>
-          <Route path="/uploadsegment" element={<UploadSegment />}/>
+          <Route path="/uploadsegment" element={<ImageSegmentation/>}/>
           
       </Routes>
     </div>

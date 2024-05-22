@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'; // Import useNavigate
 
 import { useLocation } from 'react-router-dom';
 const HumanModels = () => {
-    const [view, setView] = useState("front");
+    const [view, setView] = useState("back");
     
     const navigate = useNavigate(); // Initialize useNavigate hook
     // const { patientId } = useParams(); 

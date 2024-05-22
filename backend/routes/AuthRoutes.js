@@ -5,8 +5,8 @@ const router = require("express").Router();
 const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-const uploadController = require('./../controllers/uploadController')
-const {UploadSegment} =require('../controllers/UploadSegmentController')
+//const uploadController = require('./../controllers/uploadController')
+//const {UploadSegment} =require('../controllers/UploadSegmentController')
 
 const {AddPatient, GetPatient , PatientDetails}=require("../controllers/AddPatientController");
 const { MarkedImage,getAllMarkedImages } = require("../controllers/SegmentController");
@@ -17,8 +17,8 @@ router.post("/login",Login);
 router.post('/',userVerification);
 router.post("/markedimage", MarkedImage);
 router.get("/allmarkedimages/:patientId",getAllMarkedImages);
-router.post("/upload", upload.single("image"),uploadController.uploadImage);
-router.post("/uploadandsegment", upload.single("image"),UploadSegment);
+//router.post("/upload", upload.single("image"),uploadController.uploadImage);
+//router.post("/uploadandsegment", upload.single("image"),UploadSegment);
 router.get("/patientdetails/:patientId",PatientDetails);
 
 module.exports = router;

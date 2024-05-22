@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios'
 import humanBodyImage from './b4_updated.png'; // Import the static image
 import { useLocation } from 'react-router-dom';
@@ -103,10 +103,26 @@ function EditHumanModel() {
     const { imageData, totalPixels,patientId } = location.state || {};
     console.log(patientId);
 
+    const [patientDetails, setPatientDetails] = useState(null);
+    
+    useEffect(() => {
+        if (patientId) {
+            fetchPatientDetails(patientId);
+        }
+    }, [patientId]);
+    const fetchPatientDetails = async (patientId) => {
+        try {
+            const response = await axios.get(`http://localhost:4000/patientdetails/${patientId}`);
+            setPatientDetails(response.data);
+        } catch (error) {
+            console.error('Error fetching patient details:', error);
+        }
+    };
+
     const [updatedImage, setUpdatedImage] = useState(imageData);
     const [totalSurfaceArea, setTotalSurfaceArea] = useState(0);
     const [markedRegions, setMarkedRegions] = useState(0);
-    const [colorSelection,handleColorSelection] =useState([255, 0, 0, 255]);
+    const [colorSelection,handleColorSelection] =useState([255, 236, 25, 255]);
    // const [Tsa,setTsa]=useState(0);
     const [totalMarkedPixels, setTotalMarkedPixels] = useState(totalPixels);
 
@@ -126,7 +142,11 @@ function EditHumanModel() {
         let fillColor;
         var f=0;
         if ((pixelColor[2] !== 255)) {
-            if((colorSelection[0] === 0 &&colorSelection[2] ===49)&&(pixelColor[0] !== 255 &&pixelColor[2] !==25)){
+            if((pixelColor[0]===colorSelection[0]&&colorSelection[1]===pixelColor[1]&&pixelColor[2]===colorSelection[2])){
+                fillColor = [255, 255, 255, 255]; // White color
+                 f=1;
+               }
+            else if((colorSelection[0] === 0 &&colorSelection[2] ===49)&&(pixelColor[0] !== 255 &&pixelColor[2] !==25)){
                 fillColor=colorSelection;
                 f=1;
             }
@@ -135,6 +155,7 @@ function EditHumanModel() {
                 f=2;
             }
             else if((colorSelection[0] === 255 &&colorSelection[2] ===25)&&(pixelColor[0] !== 0 &&pixelColor[2] !==49)){
+                
                 fillColor=colorSelection;
                 f=1;
             }
@@ -142,23 +163,21 @@ function EditHumanModel() {
                 fillColor=colorSelection;
                 f=2;
             }
-            else if(pixelColor[0]===colorSelection[0]&&colorSelection[1]===pixelColor[1]&&pixelColor[2]===colorSelection[2]){
-             fillColor = [255, 255, 255, 255]; // White color
-              f=1;
-            }else{
+           else{
                 fillColor=colorSelection;
                 f=2;
-                if(pixelColor[0]===0&&pixelColor[2]===49||pixelColor[0]===255&&pixelColor[2]===25){
+                if((pixelColor[0]===0&&pixelColor[2]===49)||(pixelColor[0]===255&&pixelColor[2]===25)){
                  f=0;   
                 }
             }
         } else {
             fillColor = colorSelection;
             f=0
-            if((pixelColor[0]===0&&pixelColor[2]===49)||(pixelColor[0]===255&&pixelColor[2]===25)){
-                f=0;   
-               }
+            if((fillColor[0] === 0 &&fillColor[2] ===49)||(fillColor[0] === 255 &&fillColor[2] ===25)){
+                f=2;
+            }
         }
+
 
         const boundaryColor = [0, 0, 0, 255]; // Black color (assuming boundary is black)
 
@@ -229,9 +248,9 @@ function EditHumanModel() {
         if(totalMarkedPixels<0){
             setTotalMarkedPixels(0);
         }
-        let totalSurfaceArea=(totalMarkedPixels/tsa);
-        let tfr = (totalSurfaceArea*2*75).toFixed(4);
-        setTfr(tfr);
+        let totalSurfaceArea=(totalMarkedPixels/tsa)*100;
+        let tfr = (totalSurfaceArea*4*patientDetails.weight).toFixed(4);
+        setTfr(tfr+"ml");
     }
 
 

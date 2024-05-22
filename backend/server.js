@@ -10,9 +10,9 @@ const authRoute = require("./routes/AuthRoutes");
 
 //const tf = require('@tensorflow/tfjs-node');
 
-const tf = require("@tensorflow/tfjs");
-const tfn = require("@tensorflow/tfjs-node");
-const handler = tfn.io.fileSystem("D:/mini project/Bye_Burn/backend/tf-models/wts.h5");
+// const tf = require("@tensorflow/tfjs");
+// const tfn = require("@tensorflow/tfjs-node");
+// const handler = tfn.io.fileSystem("D:/mini project/Bye_Burn/backend/tf-models/wts.h5");
 
 
 
@@ -33,13 +33,13 @@ app.use(
   })
 );
 
-async function loadModel() {
-  const modelUrl =
-  'https://storage.googleapis.com/tfjs-models/savedmodel/mobilenet_v2_1.0_224/model.json';
-const model = await tf.loadGraphModel(modelUrl);
-const zeros = tf.zeros([1, 224, 224, 3]);
-model.predict(zeros).print();
-}
+// async function loadModel() {
+//   const modelUrl =
+//   'https://storage.googleapis.com/tfjs-models/savedmodel/mobilenet_v2_1.0_224/model.json';
+// const model = await tf.loadGraphModel(modelUrl);
+// const zeros = tf.zeros([1, 224, 224, 3]);
+// model.predict(zeros).print();
+// }
 
 // async function main() {
 //   const model = await loadModel();
